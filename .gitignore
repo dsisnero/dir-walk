@@ -28,6 +28,9 @@ package-lock.json
 parallelism.txt
 crystal.parallel.html
 
+# Apple Double resource fork files
+._*
+
 # Example binaries
 examples/fdlike
 examples/.fdlike
