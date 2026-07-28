@@ -14,3 +14,20 @@ temp/
 
 # Crystal build cache
 .crystal-cache/
+
+# Backup files
+*.bak*
+
+# JS artifacts
+node_modules/
+package.json
+package-lock.json
+
+# Other artifacts
+.lattice-cache/
+parallelism.txt
+crystal.parallel.html
+
+# Example binaries
+examples/fdlike
+examples/.fdlike
