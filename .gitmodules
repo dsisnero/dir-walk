@@ -1,0 +1,6 @@
+[submodule "vendor/fastwalk"]
+	path = vendor/fastwalk
+	url = https://github.com/charlievieth/fastwalk.git
+[submodule "vendor/ripgrep"]
+	path = vendor/ripgrep
+	url = https://github.com/BurntSushi/ripgrep.git

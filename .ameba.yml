@@ -1,0 +1,36 @@
+Version: "1.6.0"
+
+Excluded:
+  - temp/**/*
+  - lib/**/*
+  - vendor/**/*
+
+Metrics/CyclomaticComplexity:
+  Excluded:
+    - src/**/*
+
+Naming/BlockParameterName:
+  Excluded:
+    - spec/**/*
+    - src/**/*
+
+Naming/QueryBoolMethods:
+  Excluded:
+    - src/**/*
+
+Lint/NotNil:
+  Excluded:
+    - spec/**/*
+    - src/**/*
+
+Lint/UselessAssign:
+  Excluded:
+    - spec/**/*
+
+Lint/UnusedArgument:
+  Excluded:
+    - spec/**/*
+
+Style/VerboseBlock:
+  Excluded:
+    - src/dir-walk/adapters.cr
