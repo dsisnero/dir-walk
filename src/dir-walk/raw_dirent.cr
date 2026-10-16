@@ -1,4 +1,6 @@
-require "c/dirent"
+{% unless flag?(:win32) %}
+  require "c/dirent"
+{% end %}
 
 # POSIX/BSD d_type values (standardized across Linux, macOS, BSD)
 module Dir::Walk
@@ -29,6 +31,13 @@ module Dir::Walk
   # Yields (name : String, entry_type : File::Type) for each entry.
   # Skips "." and ".." and zero-inode entries (deleted files on macOS).
   def self.raw_read_dir(dir_path : String, & : String, File::Type ->) : Nil
+    {% if flag?(:win32) %}
+      # Windows has no POSIX dirent API. Let the walker resolve each entry's
+      # type with its existing lstat fallback.
+      Dir.each_child(dir_path) do |name|
+        yield name, File::Type::Unknown
+      end
+    {% else %}
     dir = LibC.opendir(dir_path.check_no_null_byte)
     unless dir
       raise File::Error.from_errno("Error opening directory", file: dir_path)
@@ -70,5 +79,6 @@ module Dir::Walk
     ensure
       LibC.closedir(dir)
     end
+    {% end %}
   end
 end
